@@ -1,135 +1,139 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <title>SOIL</title>
 
-        <!-- meta viewport tag needed to make site responsive on mobile devices https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag -->
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
 
-        <title>WCC Portfolio - Demo Page</title>
+<body>
+    <nav>
+        <a href="../">Back to Home</a>
+    </nav>
 
-        <!-- including for some global styling -->
-        <link rel="stylesheet" href="../css/style.css">
-        <!-- if I had some styling I wanted to include on one special page -->
-        <link rel="stylesheet" href="css/demo-style.css">
-    </head>
-    <body>
-        <!-- if you have sub-pages think about adding a simple back button -->
-        <nav>
-            <a href="../">HOME</a>
-        </nav>
-        <header class="documentation-header">
-            <section class="center-text">
-                <h1>BW TELEVISION</h1>
-                <h2>by Zhiheng Chen</h6>
-                <p>BW Television is a virtual interactive installation which is controlled by music and mouse.</p> 
-            </section>
-        </header>
+    <header>
+        <h1>Soil Documentation</h1>
+    </header>
 
-        <main class="documentation-page">
-            <section>
-                <div class="responsive-video">
-                    <iframe title="vimeo-player" src="https://player.vimeo.com/video/825532023?h=acd641c746" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </section>
-            <section>
+    <main>
+        <section>
+            <img class="page-img" src="../assets/images/tv.jpeg">
+                <p class="material">Interactive Online Experience - Screenshot</p>
                 <h3>Introduction</h3>
-                <p>Black and White Television is a multisensory virtual interactive installation. The animation on the screen of BW TV is controlled by music, mouse position and slider’s data. Audiences can move mouse and drag the slider to interact with this project.</p>
-            </section>
-            <section>
+                <p>I wanted to create an app that could visualise the soil nutrients in a given location, based on existing open-source data. The idea is to give perspective to the gold that lies beneath our feet and to raise awareness of good soil health.</p>
+
                 <h3>Concept and Background Research</h3>
-                
-                <p>The concept behind the multisensory virtual interactive installation, "Black and White Television," is to create an immersive experience for the audience by combining visual, auditory, and tactile elements. The installation utilizes a virtual black and white TV and speakers, controlled by music, mouse position, and slider data. The project aims to stimulate the audience's senses and provide an engaging and interactive encounter.</p>
-                <p>Originally, the plan was to generate virtual objects and integrate them into physical devices, utilizing real speakers and buttons. However, due to unforeseen challenges, the final presentation of the physical setup did not meet the my expectations. As a result, virtual versions of the black and white TV and speakers were developed, and a three.js scene was constructed to enhance control over lighting, space, position, materials, and size. </p>
-                <p>The project implementation involved the use of fragment and vertex shaders to create animations for the virtual objects. The three.js library built the 3D scene, imported the TV and speakers models, and incorporated an audio file. Data from the audio, mouse position, and GUI elements were then passed to the fragment shader to enable audience interaction with the virtual objects on the screen. </p>
-                
-                <!-- <div class="flex-container flex-basis-half">
-                    <div class="page-img-s"> -->
-                        <img class="page-img-s" src="../assets/images/tv.jpeg"/>
-                    <!-- </div>
-                    <div class="page-img-s"> -->
-                        <img class="page-img-s" src="../assets/images/speaker.jpg"/>
-                    <!-- </div>
-                </div> -->
-                <!-- if you have a full width image try make it not too tall -->
-                <!-- <img src="../assets/images/tv.jpeg" width="50%" height="50%"/> -->
-                
-            </section>
-            <section>
+                <p>I was fascinated by artists who use data in their art and represent it in abstract ways. The work “Your Brain on Music” By Laurie Frick, was a big inspiration in terms of visual representation and the use of data that is hugely personal. Artists outside of data that influenced my visual language include Maxim Zhestkov - especially his particle systems in 'Elements' and 'Volumes', Rachel Whiteread's use of see-through, coloured repeated blocks of resin in 'Untitled (One Hundred Spaces)' and the scattered, floating material quality of Cornelia Parker's  'Exploding Shed'.
+                    <br><br>
+                Most of the artworks mentioned are in physical, installation form, which is what I intend for my piece to be in the future, however I was also very drawn to the idea of having an app version, with which I could visualize the particles in advance in order to give me an idea of the way it would look, as well as the possible scope for physicalizing.
+                <br><br>
+                The initial idea started off as a sketch, with the idea that one could move around and inside the particles and click on them to learn more about their importance. Since I had already done a data visualization for one of my weekly assignments, I could use some of the knowledge and code within that in my new, 3d project.
+                </p>
+                <img class="page-img-s" src="../assets/images/tv.jpeg">
+
                 <h3>Technical Implementation</h3>
+                <p>I decided to use three.js for this, as I haven't used other 3D engines before and I already knew that it was possible to process data in Javascript, as well as different ways of doing it. The main problem I encountered early on was the type of file that was available - an ESRI Shapefile - which is a geolocation file made with specific software, such as QGIS. After days of research, I decided to in the first instance, manually write out the data in a .json file before committing to reading multiple files for multiple locations. If I could achieve all the visual aesthetic with one, the my plan was to move on to the 'all'.
 
-                <!-- example of styling for three images, you can write your own styling -->
-                <div class="flex-container flex-basis-third">
-                    <div class="flex-item">
-                        <img src="../assets/images/fragment.png"/>
-                    </div>
-                    <div class="flex-item">
-                        <img src="../assets/images/whitemodel.png"/>
-                    </div>
-                    <div class="flex-item">
-                        <img src="../assets/images/scene.png"/>
-                    </div>
-                </div>
-
-                    <div class="flex-container flex-basis-half">
-                    <div class="flex-item">
-                        <img src="../assets/images/code1.png"/>
-                    </div>
-                    <div class="flex-item">
-                        <img src="../assets/images/code2.png"/>
-                    </div>
-                </div>
+                    <br><br>
+                However even just using data for one location took a really long time to get right in three,js, as it's not a library I have spent much time with before (apart from our weekly 3d assignment). 
                 
-                <p>First, I used fragment and vertex shaders to create an animation of the virtual objects. Second, I created the 3D scene using three.js and imported the TV model, speakers model and audio file. Then I passed the audio data, mouse position data and Gui’s data from three.js to the fragment shader and used these data to allow the audiences to interact with the virtual objects on the screen. I used three.js, the fragment and vertex shaders and Blender to create the virtual objects because these are tools I am not familiar with and I think they are very suitable for 3D object creation. I really wanted to learn more about programming techniques for 3D objects. </p>
-            
-                <!-- example of styling for three images, you can write your own styling -->
-                <!-- <div class="flex-container flex-basis-half">
-                    <div class="flex-item">
-                        <img src="../assets/images/repeating-diagonal-lines-rect.jpeg"/>
-                    </div>
-                    <div class="flex-item">
-                        <img src="../assets/images/repeating-diagonal-lines-rect.jpeg"/>
-                    </div>
-                </div> -->
-
                 
 
-                <!-- default flex item is for 4 & follows media query styling for home page -->
-                <!-- <div class="flex-container">
-                    <div class="flex-item">
-                        <img src="../assets/images/repeating-diagonal-lines-rect.jpeg"/>
-                    </div>
-                    <div class="flex-item">
-                        <img src="../assets/images/repeating-diagonal-lines-rect.jpeg"/>
-                    </div>
-                    <div class="flex-item">
-                        <img src="../assets/images/repeating-diagonal-lines-rect.jpeg"/>
-                    </div>
-                    <div class="flex-item">
-                        <img src="../assets/images/repeating-diagonal-lines-rect.jpeg"/>
-                    </div>
-                </div> -->
-         
-            </section>
-            <section>
+                <br><br>
+                I started with getting some spheres up, and attaching different data to them.</p>
+                <img class="page-img-s" src="../assets/images/tv.jpeg">
+                <img class="page-img-s" src="../assets/images/tv.jpeg">
+                <p>After this, it was important to get the materials right, including reflections and surrounding environment. I used an HDR image so the material would look more 'shiny', but if this was an AR experience it would have to use reflections of the real environment.
+                    <br><br>
+                The time-lapse of the slider is now very smooth, however it was hugely problematic to get it to work, due to other work arounds like sphere positions and difficulties with mouse intersections. 
+                </p>
+
                 <h3>Reflection and Future Development</h3>
-                <p>Throughout the project, I encountered challenges that prompted a shift in my original approach. While the final rendering and modelling of the 3D scene were satisfying, the animation of the virtual objects and the interactive aspects of the installation require further improvement. I acknowledge the need to explore additional algorithms to enhance the generation of virtual objects and plan to dedicate more time to studying three.js and advancing my skills in 3D object programming.</p>
-                <p>Despite the initial setbacks, the decision to transition to a virtual environment using three.js proved beneficial. It allowed me to exercise greater control over various elements of the installation, including lighting, space, position, materials, and size. By utilizing tools such as three.js, fragment and vertex shaders, and Blender, I expanded their skill set and acquired valuable experience in the creation of 3D objects.</p>
-                <p>Looking ahead, I am determined to make the virtual scene more captivating and alluring. This entails investing more time in studying algorithms and delving deeper into the possibilities offered by three.js. By doing so, I aspire to enhance the animation of virtual objects and refine the interactive nature of the installation. Specifically, integrating buttons within the 3D scene, rather than relying solely on HTML elements, is an area I intend to explore.</p>
-            </section>
-            <section>
-                <h3>References</h3>
-                <ul>
-                    <li>https://luruke.github.io/monolith/index.html</li>
-                    <li>https://twitter.com/luruke</li>
-                </ul>
-            </section>
-        </main>
+                <p>In the near future I want to make this app into an XR experience, one which could be used by anyone to view their recorded location's soil nutrients and I would also like to add a location selector for displaying particles from different places. To add the locations I will need to figure out how to read Shapefiles in Javascript, but I have already found useful tutorials online with useful tips, so I know that it has been done before.
 
-        <footer>
-            <!-- normally information like contact details etc  -->
-            <!-- read more about semantic HTML https://www.w3schools.com/html/html5_semantic_elements.asp -->
-            
-         </footer>
-    </body>
+                <br><br>
+                I also think there is a certain limitation when representing data in such a scientific way, and so for my physical piece I would want to explore a more philosophical side to the project.
+                </p>
+                
+        </section>
+
+        <section>
+            <h3>Video of the App in progress</h3>
+                <div class="responsive-video">
+                    <iframe title="vimeo-player" src="https://player.vimeo.com/video/822982887?h=49c9cd9ff9" width="100%" height="100%" frameborder="0"    allowfullscreen></iframe>
+                </div>
+        </section>
+
+        <section>
+            <h3>References</h3>
+            <p>Three.js
+                Glass texture on material
+                https://tympanus.net/codrops/2021/10/27/creating-the-effect-of-transparent-glass-and-plastic-in-three-js/
+                <br><br>
+                Raycasting:
+                https://www.youtube.com/watch?v=CbUhot3K-gc
+                <br><br>
+                Raycasting THREE.js example:
+                https://threejs.org/examples/#webgl_interactive_cubes
+                https://github.com/mrdoob/three.js/blob/master/examples/webgl_interactive_cubes.html
+                <br><br>
+                Draggable objects:
+                https://www.youtube.com/watch?v=a0qSHBnqORU
+                <br><br>
+                Detecting collisions:
+                https://www.youtube.com/watch?v=9H3HPq-BTMo
+                <br><br>
+                Loading an HDR texture:
+                https://www.youtube.com/watch?v=6XvqaokjuYU
+                <br><br>
+                Glass texture:
+                https://www.youtube.com/watch?v=0GPLUJfH1PI
+                <br><br>
+                Adding css/html to three js project
+                https://www.youtube.com/watch?v=0ZW3xrFhY3w
+                <br><br>
+                Checking if device is mobile:
+                https://medium.com/simplejs/detect-the-users-device-type-with-a-simple-javascript-check-4fc656b735e1
+                <br><br>
+                Mouse picking:
+                https://youtu.be/3SGdxk7HMGw?t=611
+                <br><br>
+                Using the range slider:
+                https://www.w3schools.com/howto/howto_js_rangeslider.asp
+                <br><br>
+                Creating popup:
+                https://www.youtube.com/watch?v=AF6vGYIyV8M
+                <br><br>
+                Data sourced:
+                Henrys, P.A.; Keith, A.M.; Robinson, D.A.; Emmett, B.A. (2012). Model estimates of topsoil invertebrates [Countryside Survey] NERC Environmental Information Data Centre. https://doi.org/10.5285/f19de821-a436-4b28-95f6-b7287ef0bf15
+                <br><br>
+                Soil information:
+                Heneghan, L., Coleman, D. C., Zou, X., Crossley, D. A. & Haines, B. L. Soil microarthropod contributions to decomposition dynamics: Tropical-temperate comparisons of a single substrate. Ecology. 80, 1873–1882 (1999)
+                <br><br>
+                Lavelle, P. et al. Soil function in a changing world: the role of invertebrate ecosystem engineers. European Journal of Soil Biology. 33, 159–193 (1997)
+                <br><br>
+                https://www.soilfoodweb.com/resources/animations-videos/?vID=372925873&h=707aa77aa3
+                
+                <br><br>
+                MIT Climate PortalSoil Based Carbon Sequestration - https://climate.mit.edu/explainers/soil-based-carbon-sequestration
+                <br><br>
+                European Environment Agency - https://www.eea.europa.eu/publications/soil-carbon
+                <br><br>
+                World Economic Forum - https://www.weforum.org/agenda/2021/08/carbon-in-soil-key-to-halting-climate-change/
+                <br><br>
+                 Muindi, Esther. (2019). Understanding Soil Phosphorus. International Journal of Plant & Soil Science. 1-18. 10.9734/ijpss/2019/v31i230208.
+                 <br><br>
+                Nicholas T. Girkin, Hannah V. Cooper,Nitrogen and ammonia in soils,Reference Module in Earth Systems and Environmental Sciences,Elsevier, 2022, ISBN 9780124095489,https://doi.org/10.1016/B978-0-12-822974-3.00010-0.(https://www.sciencedirect.com/science/article/pii/B9780128229743000100)
+                
+                </p>
+        </section>
+    </main>
+    
+
+    
+</body>
+
 </html>
